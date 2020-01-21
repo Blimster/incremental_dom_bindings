@@ -1,7 +1,6 @@
 name: incremental_dom
-description: A Dart binding for the Incremental DOM library.
+description: A Dart binding for the Incremental DOM library.n
 version: 1.0.0
-author: Oliver Damm <oliver.damm@gmx.de>
 homepage: http://www.github.com/blimster/incremental_dom
 
 environment:

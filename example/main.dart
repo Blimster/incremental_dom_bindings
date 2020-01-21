@@ -6,19 +6,13 @@ void main() {
   final root = querySelector('#root');
 
   patch(root, (data) {
-    final foo = elementOpen(
-      'div',
-      null,
-      [
-        'class',
-        'testClass',
-        'style',
-        {'color': 'red'},
-      ],
-    );
-    text('hello world');
+    elementOpen('div', null, [
+      'id',
+      'testId',
+      'style',
+      {'color': 'red'}
+    ]);
+    text('Hello World');
     elementClose('div');
-
-    print(foo.attributes['class']);
   });
 }

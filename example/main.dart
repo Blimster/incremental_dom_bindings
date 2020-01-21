@@ -5,20 +5,20 @@ import 'package:incremental_dom/incremental_dom.dart';
 void main() {
   final root = querySelector('#root');
 
-  void foo(e, n, v) => print('$e $n $v');
-
-  attributes.setDefault(foo);
-
   patch(root, (data) {
-    elementOpen(
+    final foo = elementOpen(
       'div',
       null,
       [
+        'class',
+        'testClass',
         'style',
         {'color': 'red'},
       ],
     );
     text('hello world');
     elementClose('div');
+
+    print(foo.attributes['class']);
   });
 }

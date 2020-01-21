@@ -11,7 +11,7 @@ final JsObject _attributes = _incDom['attributes'];
 /// function call.
 List<Object> _mapArgs(List<Object> args) {
   if (args == null) {
-    return null;
+    return [];
   }
   return args.map((arg) {
     if (arg is Map) {
@@ -75,9 +75,7 @@ Element elementOpen(
 /// Element once during creation. These will not be updated
 /// during subsequent passes. See 'Statics Array' in the
 /// IncrementalDOM documentation.
-///
-/// Returns the corresponding DOM Element.
-Element elementOpenStart(
+void elementOpenStart(
   String tagname, [
   String key,
   List<Object> staticPropertyValuePairs,
@@ -87,7 +85,7 @@ Element elementOpenStart(
     key,
     JsArray.from(_mapArgs(staticPropertyValuePairs)),
   ];
-  return _incDom.callMethod('elementOpen', args);
+  _incDom.callMethod('elementOpenStart', args);
 }
 
 /// Used with [elementOpenStart] and [elementOpenEnd] to declare an element.
@@ -99,7 +97,7 @@ void attr(String name, Object value) => _incDom.callMethod('attr', [name, value]
 /// element.
 ///
 /// Returns the corresponding DOM Element.
-Element elementOpenEnd(String tagname) => _incDom.callMethod('elementOpenEnd', [tagname]);
+Element elementOpenEnd() => _incDom.callMethod('elementOpenEnd');
 
 /// Signifies the end of the element opened with
 /// [elementOpen], corresponding to a closing tag (e.g.
@@ -155,7 +153,10 @@ Element elementVoid(
 /// appear at the current location in the document tree.
 ///
 /// The [formatters] are optional functions that format the
-/// value when it changes.
+/// value when it changes. The formatters are applied in the
+/// order they appear in the lost of formatters. The second
+/// formatter will receive the result of the first formatter
+/// and so on.
 ///
 /// Returns the corresponding DOM Text Node.
 Text text(Object value, {List<String Function(Object)> formatters}) {
@@ -261,10 +262,12 @@ typedef NodeListener = void Function(List<Node> nodes);
 /// See [notifications].
 class Notifications {
   /// Sets the listener for the event of added nodes.
-  set nodesCreaded(NodeListener listener) => _notifications['nodesCreated'] = listener;
+  set nodesCreaded(NodeListener listener) =>
+      _notifications['nodesCreated'] = (JsArray nodes) => listener(nodes.cast<Node>().toList());
 
   /// Sets the listener for the event of deleted nodes.
-  set nodesDeleted(NodeListener listener) => _notifications['nodesDeleted'] = listener;
+  set nodesDeleted(NodeListener listener) =>
+      _notifications['nodesDeleted'] = (JsArray nodes) => listener(nodes.cast<Node>().toList());
 }
 
 /// You can be notified when Nodes are added or removed by

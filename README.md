@@ -1,4 +1,4 @@
-# incremental_dom
+# incremental_dom_bindings
 Dart binding for the Incremental DOM library.
 
 From the original Incremental DOM docuementation:
@@ -24,7 +24,7 @@ This simple example adds an element to the DOM.
 ```dart
 import 'dart:html';
 
-import 'package:incremental_dom/incremental_dom.dart';
+import 'package:incremental_dom_bindings/incremental_dom.dart';
 
 void main() {
   // query the element to patch

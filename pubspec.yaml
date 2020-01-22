@@ -1,7 +1,7 @@
 name: incremental_dom_bindings
-description: Dart bindings for the Incremental DOM library.
-version: 1.0.0
-homepage: http://www.github.com/blimster/incremental_dom_bindings
+description: Dart bindings for the Incremental DOM library. Incremental DOM is a library for expressing and applying updates to DOM trees incrementally.
+version: 1.0.0+1
+homepage: https://www.github.com/blimster/incremental_dom_bindings
 
 environment:
   sdk: '>=2.7.0 <3.0.0'

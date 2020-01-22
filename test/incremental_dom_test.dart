@@ -2,7 +2,7 @@
 
 import 'dart:html';
 
-import 'package:incremental_dom_bindings/incremental_dom.dart';
+import 'package:incremental_dom_bindings/incremental_dom_bindings.dart';
 import 'package:test/test.dart';
 
 void main() {

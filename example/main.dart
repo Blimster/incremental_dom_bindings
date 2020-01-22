@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:incremental_dom_bindings/incremental_dom.dart';
+import 'package:incremental_dom_bindings/incremental_dom_bindings.dart';
 
 void main() {
   // query the element to patch

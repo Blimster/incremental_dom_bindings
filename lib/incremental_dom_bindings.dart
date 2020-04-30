@@ -3,9 +3,9 @@ library incremental_dom;
 import 'dart:html';
 import 'dart:js';
 
-final JsObject _incDom = context['IncrementalDOM'];
-final JsObject _notifications = _incDom['notifications'];
-final JsObject _attributes = _incDom['attributes'];
+final JsObject _incDom = context['IncrementalDOM'] as JsObject;
+final JsObject _notifications = _incDom['notifications'] as JsObject;
+final JsObject _attributes = _incDom['attributes'] as JsObject;
 
 /// Maps a list arguments to be valid for Javascript
 /// function call.
@@ -51,12 +51,12 @@ Element elementOpen(
   List<Object> staticPropertyValuePairs,
   List<Object> propertyValuePairs,
 ]) {
-  return _incDom.callMethod('elementOpen', [
+  return _incDom.callMethod('elementOpen', <Object>[
     tagname,
     key,
     JsArray.from(_mapArgs(staticPropertyValuePairs)),
     ...?_mapArgs(propertyValuePairs),
-  ]);
+  ]) as Element;
 }
 
 /// Used with [attr] and [elementOpenEnd] to declare an
@@ -91,13 +91,13 @@ void elementOpenStart(
 /// Used with [elementOpenStart] and [elementOpenEnd] to declare an element.
 ///
 /// Sets an attribute with [name] and [value].
-void attr(String name, Object value) => _incDom.callMethod('attr', [name, value]);
+void attr(String name, Object value) => _incDom.callMethod('attr', <Object>[name, value]);
 
 /// Used with [elementOpenStart] and [attr] to declare an
 /// element.
 ///
 /// Returns the corresponding DOM Element.
-Element elementOpenEnd() => _incDom.callMethod('elementOpenEnd');
+Element elementOpenEnd() => _incDom.callMethod('elementOpenEnd') as Element;
 
 /// Signifies the end of the element opened with
 /// [elementOpen], corresponding to a closing tag (e.g.
@@ -110,7 +110,7 @@ Element elementOpenEnd() => _incDom.callMethod('elementOpenEnd');
 /// This could also be the tag of a custom element.
 ///
 /// Returns the corresponding DOM Element.
-Element elementClose(String tagname) => _incDom.callMethod('elementClose', [tagname]);
+Element elementClose(String tagname) => _incDom.callMethod('elementClose', <Object>[tagname]) as Element;
 
 /// A combination of [elementOpen], followed by
 /// [elementClose].
@@ -141,12 +141,12 @@ Element elementVoid(
   List<Object> staticPropertyValuePairs,
   List<Object> propertyValuePairs,
 ]) {
-  return _incDom.callMethod('elementVoid', [
+  return _incDom.callMethod('elementVoid', <Object>[
     tagname,
     key,
     JsArray.from(_mapArgs(staticPropertyValuePairs)),
     ...?_mapArgs(propertyValuePairs),
-  ]);
+  ]) as Element;
 }
 
 /// Declares a Text node, with the specified [text], should
@@ -160,10 +160,10 @@ Element elementVoid(
 ///
 /// Returns the corresponding DOM Text Node.
 Text text(Object value, {List<String Function(Object)> formatters}) {
-  return _incDom.callMethod('text', [
+  return _incDom.callMethod('text', <Object>[
     value,
     ...?formatters,
-  ]);
+  ]) as Text;
 }
 
 /// Updates the provided Node with a function containing
@@ -179,13 +179,13 @@ Text text(Object value, {List<String Function(Object)> formatters}) {
 /// [description] is the callback to build the DOM tree
 /// underneath [node].
 void patch(Node node, void Function(Object) description, [Object data]) {
-  _incDom.callMethod('patch', [node, description, data]);
+  _incDom.callMethod('patch', <Object>[node, description, data]);
 }
 
 /// Provides a way to get the currently open element.
 ///
 /// Returns the currently open element.
-Element currentElement() => _incDom.callMethod('currentElement');
+Element currentElement() => _incDom.callMethod('currentElement') as Element;
 
 /// The current location in the DOM that Incremental DOM is
 /// looking at. This will be the next Node that will be
@@ -193,7 +193,7 @@ Element currentElement() => _incDom.callMethod('currentElement');
 /// call.
 ///
 /// Returns the next node that will be compared.
-Node currentPointer() => _incDom.callMethod('currentPointer');
+Node currentPointer() => _incDom.callMethod('currentPointer') as Element;
 
 /// Moves the current pointer to the end of the currently
 /// open element. This prevents Incremental DOM from

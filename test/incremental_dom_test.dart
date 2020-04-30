@@ -26,8 +26,8 @@ void main() {
       expect(elementFromDom, equals(elementFromCall));
     });
     test('creates an element with the given attributes and properties', () {
-      patch(root, (_) {
-        final element = elementOpen('span', null, ['class', 'testClass', 'onclick', (_) {}], ['id', 'testId']);
+      patch(root, (Object _) {
+        final element = elementOpen('span', null, ['class', 'testClass', 'onclick', (Object _) {}], ['id', 'testId']);
         elementClose('span');
 
         expect(element.attributes['class'], equals('testClass'));
@@ -52,7 +52,7 @@ void main() {
 
     test('creates an element with the given attributes and properties', () {
       patch(root, (_) {
-        elementOpenStart('span', null, ['id', 'testId', 'class', 'testClass', 'onclick', (_) {}]);
+        elementOpenStart('span', null, ['id', 'testId', 'class', 'testClass', 'onclick', (Object _) {}]);
         final element = elementOpenEnd();
         elementClose('span');
 
@@ -118,7 +118,7 @@ void main() {
     });
     test('creates an element with the given attributes and properties', () {
       patch(root, (_) {
-        final element = elementVoid('span', null, ['class', 'testClass', 'onclick', (_) {}], ['id', 'testId']);
+        final element = elementVoid('span', null, ['class', 'testClass', 'onclick', (Object _) {}], ['id', 'testId']);
 
         expect(element.attributes['class'], equals('testClass'));
         expect(element.attributes['id'], equals('testId'));
@@ -303,8 +303,8 @@ void main() {
 
   group('notifications', () {
     test('calls listener for add/remove events', () {
-      final created = [];
-      final deleted = [];
+      final created = <Node>[];
+      final deleted = <Node>[];
       notifications.nodesCreaded = (nodes) => created.addAll(nodes);
       notifications.nodesDeleted = (nodes) => deleted.addAll(nodes);
 
@@ -313,13 +313,13 @@ void main() {
         elementVoid('span');
       });
       expect(created.length, equals(2));
-      expect(created.map((n) => (n as Element).tagName), containsAllInOrder(['DIV', 'SPAN']));
+      expect(created.map((n) => (n as Element).tagName), containsAllInOrder(<String>['DIV', 'SPAN']));
       expect(deleted.length, equals(0));
 
       created.clear();
       patch(root, (_) {});
       expect(deleted.length, equals(2));
-      expect(deleted.map((n) => (n as Element).tagName), containsAllInOrder(['SPAN', 'DIV']));
+      expect(deleted.map((n) => (n as Element).tagName), containsAllInOrder(<String>['SPAN', 'DIV']));
       expect(created.length, equals(0));
     });
   });

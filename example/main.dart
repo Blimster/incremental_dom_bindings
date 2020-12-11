@@ -4,7 +4,7 @@ import 'package:incremental_dom_bindings/incremental_dom_bindings.dart';
 
 void main() {
   // query the element to patch
-  final root = querySelector('#root');
+  final root = querySelector('#root')!;
 
   // patch the element
   patch(root, (_) {

@@ -9,7 +9,7 @@ final JsObject _attributes = _incDom['attributes'] as JsObject;
 
 /// Maps a list arguments to be valid for Javascript
 /// function call.
-List<Object> _mapArgs(List<Object> args) {
+List<Object> _mapArgs(List<Object>? args) {
   if (args == null) {
     return [];
   }
@@ -47,15 +47,15 @@ List<Object> _mapArgs(List<Object> args) {
 /// Returns the corresponding DOM Element.
 Element elementOpen(
   String tagname, [
-  String key,
-  List<Object> staticPropertyValuePairs,
-  List<Object> propertyValuePairs,
+  String? key,
+  List<Object>? staticPropertyValuePairs,
+  List<Object>? propertyValuePairs,
 ]) {
-  return _incDom.callMethod('elementOpen', <Object>[
+  return _incDom.callMethod('elementOpen', <Object?>[
     tagname,
     key,
     JsArray.from(_mapArgs(staticPropertyValuePairs)),
-    ...?_mapArgs(propertyValuePairs),
+    ..._mapArgs(propertyValuePairs),
   ]) as Element;
 }
 
@@ -77,8 +77,8 @@ Element elementOpen(
 /// IncrementalDOM documentation.
 void elementOpenStart(
   String tagname, [
-  String key,
-  List<Object> staticPropertyValuePairs,
+  String? key,
+  List<Object>? staticPropertyValuePairs,
 ]) {
   final args = [
     tagname,
@@ -137,15 +137,15 @@ Element elementClose(String tagname) => _incDom.callMethod('elementClose', <Obje
 /// Returns the corresponding DOM Element.
 Element elementVoid(
   String tagname, [
-  String key,
-  List<Object> staticPropertyValuePairs,
-  List<Object> propertyValuePairs,
+  String? key,
+  List<Object>? staticPropertyValuePairs,
+  List<Object>? propertyValuePairs,
 ]) {
-  return _incDom.callMethod('elementVoid', <Object>[
+  return _incDom.callMethod('elementVoid', <Object?>[
     tagname,
     key,
     JsArray.from(_mapArgs(staticPropertyValuePairs)),
-    ...?_mapArgs(propertyValuePairs),
+    ..._mapArgs(propertyValuePairs),
   ]) as Element;
 }
 
@@ -159,7 +159,7 @@ Element elementVoid(
 /// and so on.
 ///
 /// Returns the corresponding DOM Text Node.
-Text text(Object value, {List<String Function(Object)> formatters}) {
+Text text(Object value, {List<String Function(Object)>? formatters}) {
   return _incDom.callMethod('text', <Object>[
     value,
     ...?formatters,
@@ -178,8 +178,8 @@ Text text(Object value, {List<String Function(Object)> formatters}) {
 ///
 /// [description] is the callback to build the DOM tree
 /// underneath [node].
-void patch(Node node, void Function(Object) description, [Object data]) {
-  _incDom.callMethod('patch', <Object>[node, description, data]);
+void patch(Node node, void Function(Object) description, [Object? data]) {
+  _incDom.callMethod('patch', <Object?>[node, description, data]);
 }
 
 /// Provides a way to get the currently open element.
@@ -234,13 +234,13 @@ class Attributes {
   /// be changed by specifying the default function.
   ///
   /// FIXME: not yet working
-  void setDefault(ValueSetter setter) {
+  void setDefault(ValueSetter? setter) {
     this['__default'] = setter;
   }
 
   /// Sets a [ValueSetter] for a property/attribute
   /// identified by a [name].
-  void operator []=(String name, ValueSetter setter) {
+  void operator []=(String name, ValueSetter? setter) {
     _attributes[name] = setter;
   }
 }

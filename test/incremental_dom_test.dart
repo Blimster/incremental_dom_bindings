@@ -6,16 +6,16 @@ import 'package:incremental_dom_bindings/incremental_dom_bindings.dart';
 import 'package:test/test.dart';
 
 void main() {
-  Element root;
+  late Element root;
 
   setUp(() {
-    root = querySelector('#root');
+    root = querySelector('#root')!;
     root.children.clear();
   });
 
   group('elementOpen()', () {
     test('creates an elemement in the DOM that is equal to the one returned by the function call', () {
-      Element elementFromCall;
+      late Element elementFromCall;
       patch(root, (_) {
         elementFromCall = elementOpen('span');
         elementClose('span');
@@ -251,9 +251,9 @@ void main() {
   group('attributes', () {
     test('calls value setter for an specific attribute', () {
       var counter = 0;
-      Element element;
-      String name;
-      Object value;
+      late Element element;
+      late String name;
+      late Object value;
       attributes['class'] = (e, n, v) {
         counter++;
         element = e;
@@ -261,7 +261,7 @@ void main() {
         value = v;
       };
 
-      Element elementFromCall;
+      late Element elementFromCall;
       patch(root, (_) {
         elementFromCall = elementVoid('span', null, ['class', 'testClass', 'id', 'testId']);
       });
@@ -277,9 +277,9 @@ void main() {
 
     test('calls the default value setter', () {
       var counter = 0;
-      Element element;
-      String name;
-      Object value;
+      late Element element;
+      late String name;
+      late Object value;
       attributes.setDefault((e, n, v) {
         counter++;
         element = e;
@@ -287,7 +287,7 @@ void main() {
         value = v;
       });
 
-      Element elementFromCall;
+      late Element elementFromCall;
       patch(root, (_) {
         elementFromCall = elementVoid('span', null, ['class', 'testClass', 'id', 'testId']);
       });

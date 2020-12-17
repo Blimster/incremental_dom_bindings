@@ -210,18 +210,18 @@ void skipNode() => _incDom.callMethod('skipNode');
 
 /// A function to set a value as a property
 /// or attribute for an element.
-typedef ValueSetter = void Function(Element element, String name, Object value);
+typedef ValueSetter = void Function(Element element, String name, Object? value);
 
 /// A predefined function, that applies a value as a
 /// property.
 ValueSetter get applyProp {
-  return (Element element, String name, Object value) => _incDom['applyProp'].apply([element, name, value]);
+  return (Element element, String name, Object? value) => _incDom['applyProp'].apply([element, name, value]);
 }
 
 /// A predefined function, that applies a value as an
 /// attribute.
 ValueSetter get applyAttr {
-  return (Element element, String name, Object value) => _incDom['applyAttr'].apply([element, name, value]);
+  return (Element element, String name, Object? value) => _incDom['applyAttr'].apply([element, name, value]);
 }
 
 /// See [attributes].

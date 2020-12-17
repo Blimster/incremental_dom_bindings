@@ -253,7 +253,7 @@ void main() {
       var counter = 0;
       late Element element;
       late String name;
-      late Object value;
+      late Object? value;
       attributes['class'] = (e, n, v) {
         counter++;
         element = e;
@@ -279,7 +279,7 @@ void main() {
       var counter = 0;
       late Element element;
       late String name;
-      late Object value;
+      late Object? value;
       attributes.setDefault((e, n, v) {
         counter++;
         element = e;

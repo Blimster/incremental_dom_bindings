@@ -1,5 +1,10 @@
-# Version xxx (add this to pubspec.yaml)
+# Version 2.0.0-nullsafety.1
 
+- Value of a ValueSetter can now be null.
+
+# Version 2.0.0-nullsafety.0
+
+- BREAKING CHANGE: Migrated to null safety.
 - Added pedantic linter rules.
 - Enabled strict type checks.
 

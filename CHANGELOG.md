@@ -1,3 +1,7 @@
+# Version 2.0.0
+
+- Stable null safety release.
+
 # Version 2.0.0-nullsafety.1
 
 - Value of a ValueSetter can now be null.

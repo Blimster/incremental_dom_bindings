@@ -1,3 +1,7 @@
+# Version 2.0.0+1
+
+- Fixed SDK constraint.
+
 # Version 2.0.0
 
 - Stable null safety release.

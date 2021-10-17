@@ -1,3 +1,8 @@
+# Version 2.1.0
+
+- BREAKING CHANGE: requires Dart SDK 2.14.0
+- Bugfix: Argument provided to callback in function `patch()` must be nullable
+
 # Version 2.0.0+1
 
 - Fixed SDK constraint.

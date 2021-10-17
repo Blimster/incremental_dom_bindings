@@ -26,7 +26,7 @@ void main() {
       expect(elementFromDom, equals(elementFromCall));
     });
     test('creates an element with the given attributes and properties', () {
-      patch(root, (Object _) {
+      patch(root, (_) {
         final element = elementOpen('span', null, ['class', 'testClass', 'onclick', (Object _) {}], ['id', 'testId']);
         elementClose('span');
 

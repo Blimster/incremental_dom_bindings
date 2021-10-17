@@ -178,7 +178,7 @@ Text text(Object value, {List<String Function(Object)>? formatters}) {
 ///
 /// [description] is the callback to build the DOM tree
 /// underneath [node].
-void patch(Node node, void Function(Object) description, [Object? data]) {
+void patch(Node node, void Function(Object?) description, [Object? data]) {
   _incDom.callMethod('patch', <Object?>[node, description, data]);
 }
 

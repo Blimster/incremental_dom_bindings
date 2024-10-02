@@ -1,3 +1,7 @@
+# Version 2.1.0+1
+
+- Updated README (thanks goes out to [@nandoflorestan](https://github.com/nandoflorestan))
+
 # Version 2.1.0
 
 - BREAKING CHANGE: requires Dart SDK 2.14.0
